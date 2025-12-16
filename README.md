@@ -1,4 +1,4 @@
-# Chronicle - Long-Term Memory Platform
+# Recall - Long-Term Memory Platform
 
 A Motia-powered platform for capturing team failures, decisions, and context—then automatically resurfacing insights when they matter most.
 
