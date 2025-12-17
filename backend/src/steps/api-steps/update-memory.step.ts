@@ -24,7 +24,7 @@ export const config: ApiRouteConfig = {
   includeFiles: ['../../types/memory.types.ts', '../../services/memory.service.ts'],
 }
 
-export const handler: Handlers['UpdateMemory'] = async (req:any, { emit, logger, streams, state }:any) => {
+export const handler: Handlers['UpdateMemory'] = async (req: any, { emit, logger, streams, state }: any) => {
   const { id } = req.pathParams
 
   try {
@@ -89,8 +89,8 @@ export const handler: Handlers['UpdateMemory'] = async (req:any, { emit, logger,
       logger.error('Validation error updating memory', { error: error.message })
       return {
         status: 400,
-        body: { 
-          error: 'Validation failed: ' + error.errors.map((e:any) => e.message).join(', ') 
+        body: {
+          error: 'Validation failed: ' + error.issues.map((e: any) => e.message).join(', ')
         },
       }
     }

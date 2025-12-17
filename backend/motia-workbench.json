@@ -27,9 +27,13 @@
   {
     "id": "qa-flow",
     "config": {
+      "src\\steps\\event-steps\\analyticsTracker.step.ts": {
+        "x": 898,
+        "y": -19
+      },
       "src\\steps\\api-steps\\answerQuestion.step.ts": {
-        "x": 0,
-        "y": 0
+        "x": 32,
+        "y": -58
       }
     }
   },
@@ -37,40 +41,68 @@
     "id": "memory-flow",
     "config": {
       "src\\steps\\event-steps\\scheduleReactivation.step.ts": {
-        "x": 935,
-        "y": 407
+        "x": 992,
+        "y": 437
       },
       "src\\steps\\event-steps\\reactivateMemory.step.ts": {
-        "x": 1312,
-        "y": 74
+        "x": 1390,
+        "y": 182
       },
       "src\\steps\\event-steps\\notifyUser.step.ts": {
-        "x": 1629,
-        "y": 405
+        "x": 1648,
+        "y": 435
+      },
+      "src\\steps\\event-steps\\memoryUpdatedHandler.step.ts": {
+        "x": 386,
+        "y": -351
+      },
+      "src\\steps\\event-steps\\memoryDeletedHandler.step.ts": {
+        "x": 21,
+        "y": -476
       },
       "src\\steps\\event-steps\\embedMemory.step.ts": {
-        "x": 517,
-        "y": 108
+        "x": 618,
+        "y": 205
       },
       "src\\steps\\event-steps\\analyzeAI.step.ts": {
-        "x": 483,
-        "y": 559
+        "x": 69,
+        "y": 437
+      },
+      "src\\steps\\event-steps\\analyticsTracker.step.ts": {
+        "x": 958,
+        "y": -38
       },
       "src\\steps\\api-steps\\update-memory.step.ts": {
-        "x": -150,
-        "y": -9
+        "x": -591,
+        "y": -66
       },
       "src\\steps\\api-steps\\search-memory.step.ts": {
-        "x": 7,
-        "y": 204
+        "x": -608,
+        "y": 360
       },
       "src\\steps\\api-steps\\log-memory.step.ts": {
-        "x": 0,
-        "y": 408
+        "x": -591,
+        "y": 162
       },
       "src\\steps\\api-steps\\get-memory.step.ts": {
-        "x": 6,
-        "y": 612
+        "x": -609,
+        "y": 572
+      },
+      "src\\steps\\api-steps\\delete-memory.step.ts": {
+        "x": -568,
+        "y": -287
+      },
+      "src\\.motia\\compiled\\steps\\event-steps\\memoryDeletedHandler.step.js": {
+        "x": 0,
+        "y": 0
+      },
+      "src\\.motia\\compiled\\steps\\event-steps\\analyticsTracker.step.js": {
+        "x": 0,
+        "y": 0
+      },
+      "src\\.motia\\compiled\\steps\\event-steps\\notifyUser.step.js": {
+        "x": 0,
+        "y": 0
       }
     }
   }

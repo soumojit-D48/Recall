@@ -2,7 +2,8 @@
 import { EventConfig, Handlers } from 'motia'
 import { z } from 'zod'
 import { differenceInMilliseconds } from 'date-fns'
-import { Memory } from '../../types/memory.types'
+// import { Memory } from '../../types/memory.types'
+import {Memory} from 'src/types/memory.types' 
 
 /**
  * Schedule Reactivation Event Step
@@ -34,7 +35,7 @@ export const handler: Handlers['ScheduleReactivation'] = async (input:any, { log
 
   try {
     // Retrieve memory from state
-    const memory = await state.get<Memory>('memories', memoryId)
+    const memory = await (state.get('memories', memoryId)) as Memory | null
 
     if (!memory) {
       logger.error('Memory not found', { memoryId })

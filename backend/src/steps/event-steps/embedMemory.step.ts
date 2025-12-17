@@ -3,6 +3,7 @@ import { EventConfig, Handlers } from 'motia'
 import { z } from 'zod'
 import { generateEmbedding } from '../../utils/openAI'
 import { storeMemoryEmbedding, createSchema } from '../../utils/weaviate'
+import { Memory } from 'src/types/memory.types'
 
 /**
  * Embed Memory Event Step
@@ -39,7 +40,7 @@ export const handler: Handlers['EmbedMemory'] = async (input:any, { logger, stat
 
   try {
     // Retrieve memory from state
-    const memory = await state.get<Memory>('memories', memoryId)
+    const memory = await (state.get('memories', memoryId)) as Memory | null
 
     if (!memory) {
       logger.error('Memory not found', { memoryId })

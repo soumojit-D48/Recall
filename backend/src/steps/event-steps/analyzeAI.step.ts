@@ -4,7 +4,9 @@
 import { EventConfig, Handlers } from 'motia'
 import { z } from 'zod'
 import { classifyMemory } from '../../utils/openAI'
-import { Memory } from '../../types/memory.types'
+// import { Memory } from '../../types/memory.types'
+import { Memory } from 'src/types/memory.types'
+
 
 /**
  * AI Analysis Event Step
@@ -39,7 +41,8 @@ export const handler: Handlers['AnalyzeAI'] = async (input: any, { logger, state
 
   try {
     // Retrieve full memory from state
-    const memory = await state.get<Memory>('memories', memoryId)
+    // const memory = await state.get<Memory>('memories', memoryId)
+    const memory = (await state.get('memories', memoryId)) as Memory | null
 
     if (!memory) {
       logger.error('Memory not found', { memoryId })

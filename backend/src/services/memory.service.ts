@@ -1,6 +1,12 @@
+import { Memory, CreateMemoryInput, UpdateMemoryInput, MemoryStatus } from '../types/memory.types.js'
 
-import { Memory, CreateMemoryInput, UpdateMemoryInput, MemoryStatus } from '../types//memory.types'
-import {State}  from 'motia'
+// State type from Motia step context
+type State = {
+  get<T>(namespace: string, key: string): Promise<T | null>
+  set(namespace: string, key: string, value: any): Promise<void>
+  delete(namespace: string, key: string): Promise<void>
+  list(namespace: string): Promise<string[]>
+}
 
 /**
  * Generate a unique ID for memories
@@ -43,8 +49,6 @@ export const memoryService = {
    * Get all memories with optional filters
    */
   async getAll(state: State, status?: MemoryStatus, teamId?: string): Promise<Memory[]> {
-    // In production, this would query with filters
-    // For now, we'll get all and filter in memory
     const allKeys = await state.list('memories')
     const memories: Memory[] = []
 
@@ -79,7 +83,6 @@ export const memoryService = {
       updatedAt: now,
     }
 
-    // Set triggeredAt when status changes to triggered
     if (input.status === 'triggered' && existing.status !== 'triggered') {
       updated.triggeredAt = now
     }
@@ -104,7 +107,6 @@ export const memoryService = {
 
   /**
    * Get memories scheduled before a certain date
-   * Used by the reactivation cron job
    */
   async getScheduledBefore(date: Date, state: State): Promise<Memory[]> {
     const allMemories = await this.getAll(state, 'scheduled')

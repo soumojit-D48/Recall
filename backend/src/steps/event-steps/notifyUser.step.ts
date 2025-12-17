@@ -29,6 +29,7 @@ export const config: EventConfig = {
   flows: ['memory-flow'],
   input: inputSchema,
   emits: [{ topic: 'notification-sent', label: 'Notification Sent' }],
+  // have to handle success and fail sent with another event
 }
 
 export const handler: Handlers['NotifyUser'] = async (input:any, { logger, state, emit }:any) => {
@@ -67,12 +68,12 @@ export const handler: Handlers['NotifyUser'] = async (input:any, { logger, state
 
     // Update notification metrics
     const metricsKey = 'notification-metrics'
-    const todayKey = new Date().toISOString().split('T')[0]
+    const todayKey = new Date().toISOString().split('T')[0] 
 
-    const existingMetrics = await state.get<Record<string, number>>(
+    const existingMetrics = await (state.get( // <Record<string, number>>
       'notification-aggregates',
       `${metricsKey}-${todayKey}`
-    )
+    )) as Record<string, number> | null
 
     const metrics = existingMetrics ?? {
       total: 0,

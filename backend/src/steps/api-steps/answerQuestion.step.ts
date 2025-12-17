@@ -31,7 +31,7 @@ export const config: ApiRouteConfig = {
     400: z.object({ error: z.string() }),
   },
   emits: [{ topic: 'track-analytics', label: 'Track Analytics Event' }],
-  includeFiles: ['../services/memory-types.ts', '../utils/openai.ts', '../utils/weaviate.ts'],
+  includeFiles: ['../../types/memory.types.ts', '../../utils/openAI.ts', '../../utils/weaviate.ts'],
 }
 
 export const handler: Handlers['AnswerQuestion'] = async (req: any, { logger, emit }: any) => {
@@ -109,7 +109,7 @@ export const handler: Handlers['AnswerQuestion'] = async (req: any, { logger, em
       return {
         status: 400,
         body: { 
-          error: 'Validation failed: ' + error.errors.map((e) => e.message).join(', ') 
+          error: 'Validation failed: ' + error.issues.map((e: any) => e.message).join(', ') 
         },
       }
     }

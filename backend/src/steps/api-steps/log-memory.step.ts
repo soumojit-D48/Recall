@@ -34,7 +34,7 @@ export const config: ApiRouteConfig = {
   includeFiles: ['../../types/memory.types.ts', '../../services/memory.service.ts'],
 }
 
-export const handler: Handlers['LogMemory'] = async (req:any, { emit, logger, streams, state }:any) => {
+export const handler: Handlers['LogMemory'] = async (req: any, { emit, logger, streams, state }: any) => {
   try {
     const input = createMemorySchema.parse(req.body)
     logger.info('Creating new memory', { title: input.title, type: input.type })
@@ -80,8 +80,8 @@ export const handler: Handlers['LogMemory'] = async (req:any, { emit, logger, st
       logger.error('Validation error creating memory', { error: error.message })
       return {
         status: 400,
-        body: { 
-          error: 'Validation failed: ' + error.errors.map((e: any) => e.message).join(', ') 
+        body: {
+          error: 'Validation failed: ' + error.issues.map((e: any) => e.message).join(', ')
         },
       }
     }

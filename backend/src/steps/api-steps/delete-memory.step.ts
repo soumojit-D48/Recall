@@ -3,6 +3,7 @@
 import { ApiRouteConfig, Handlers } from 'motia'
 import { z } from 'zod'
 import { memoryService } from '../../services/memory.service'
+// import {Memory} from '../../types/memory.types'
 
 export const config: ApiRouteConfig = {
   type: 'api',
@@ -22,7 +23,8 @@ export const config: ApiRouteConfig = {
     { topic: 'memory-deleted', label: 'Memory Deleted' },
     { topic: 'track-analytics', label: 'Track Analytics Event' },
   ],
-  includeFiles: ['../services/memory-types.ts', '../services/memory.service.ts'],
+  // includeFiles: ['../../types/memory.types.ts', '../../services/memory.service.ts'],
+  includeFiles: ['../../services/memory.service.ts'],
 }
 
 export const handler: Handlers['DeleteMemory'] = async (req:any, { emit, logger, streams, state }:any) => {
@@ -75,3 +77,6 @@ export const handler: Handlers['DeleteMemory'] = async (req:any, { emit, logger,
     },
   }
 }
+
+
+

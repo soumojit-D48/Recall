@@ -44,7 +44,7 @@ export const handler: Handlers['ReactivateMemory'] = async (input:any, { logger,
     }
 
     // Retrieve memory from state
-    const memory = await state.get<Memory>('memories', memoryId)
+    const memory = await (state.get('memories', memoryId)) as Memory | null
 
     if (!memory) {
       logger.error('Memory not found', { memoryId })
@@ -65,7 +65,7 @@ export const handler: Handlers['ReactivateMemory'] = async (input:any, { logger,
     )
 
     // Get updated memory
-    const updatedMemory = await state.get<Memory>('memories', memoryId)
+    const updatedMemory = await (state.get('memories', memoryId)) as Memory | null
 
     if (updatedMemory) {
       // Update real-time stream
